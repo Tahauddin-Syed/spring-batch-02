@@ -7,11 +7,9 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.step.builder.StepBuilder;
-import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
 @RequiredArgsConstructor
@@ -19,7 +17,6 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class MyBatchConfiguration {
 
     private final JobRepository jobRepository;
-    private final PlatformTransactionManager platformTransactionManager;
 
     @Bean
     public JobBuilder jobBuilder() {
@@ -27,23 +24,10 @@ public class MyBatchConfiguration {
     }
 
     @Bean
-    public StepBuilder stepBuilder() {
-        return new StepBuilder("stepOne", jobRepository);
-    }
-
-    @Bean
-    public Step stepOne() {
-        return stepBuilder()
-                .tasklet((contribution, chunkContext) -> RepeatStatus.FINISHED)
-                .transactionManager(platformTransactionManager)
-                .build();
-    }
-
-    @Bean
-    public Job job() {
+    public Job jobOne(Step stepOne) {
         return jobBuilder()
                 .incrementer(new RunIdIncrementer())
-                .start(stepOne())
+                .start(stepOne)
                 .build();
     }
 
