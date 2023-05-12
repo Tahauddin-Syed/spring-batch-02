@@ -1,0 +1,27 @@
+
+server:
+  port: 7003
+spring:
+  application:
+    name: Spring-Batch-App-02
+  datasource:
+    url: { }
+    username: { }
+    password: {  }
+    driverClassName: com.mysql.cj.jdbc.Driver
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.MySQL8Dialect
+    show_sql: true
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+  batch:
+    jdbc:
+      initialize-schema: always
+    job:
+      enabled: false
+
+
+
