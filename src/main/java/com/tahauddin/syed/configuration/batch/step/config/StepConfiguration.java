@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.core.step.skip.SkipLimitExceededException;
+import org.springframework.batch.core.step.skip.SkipPolicy;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -35,18 +37,21 @@ public class StepConfiguration {
 
     @Bean
     public StepBuilder stepBuilder() {
-        return new StepBuilder("stepOne", jobRepository);
+        return new StepBuilder("stepThree", jobRepository);
     }
 
 
     @Bean
     public Step stepOne() {
         return stepBuilder()
-                .<CustomerDTO, CustomerEntity>chunk(600, platformTransactionManager)
+                .<CustomerDTO, CustomerEntity>chunk(150, platformTransactionManager)
                 .reader(flatFileItemReader)
                 .processor(customerCsvToEntityProcessor)
                 .writer(batchItemWriter)
                 .listener(customerListener)
+                .faultTolerant()
+                .skip(Exception.class)
+                .skipLimit(1)
                 .build();
     }
 }

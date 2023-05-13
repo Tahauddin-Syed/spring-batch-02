@@ -29,4 +29,14 @@ public class SQLConstant {
              
             
             """;
+
+    public static final String  CUSTOMER_UPDATE_QUERY = """
+            
+            update CUSTOMER_TABLE 
+            SET
+            email = :email,
+            created_date = :created_date,
+            ip_address = :ip_address
+            where id = :id
+            """;
 }

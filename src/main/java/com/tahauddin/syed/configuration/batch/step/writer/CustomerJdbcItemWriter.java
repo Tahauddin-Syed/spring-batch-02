@@ -1,8 +1,6 @@
 package com.tahauddin.syed.configuration.batch.step.writer;
 
 
-import com.tahauddin.syed.configuration.batch.step.constants.SQLConstant;
-import com.tahauddin.syed.configuration.dto.CustomerDTO;
 import com.tahauddin.syed.dto.CustomerEntity;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,10 +8,12 @@ import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourc
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import javax.sql.DataSource;
 
 import static com.tahauddin.syed.configuration.batch.step.constants.SQLConstant.CUSTOMER_INSERT_QUERY;
+import static com.tahauddin.syed.configuration.batch.step.constants.SQLConstant.CUSTOMER_UPDATE_QUERY;
 
 @Configuration
 @RequiredArgsConstructor
@@ -21,6 +21,7 @@ import static com.tahauddin.syed.configuration.batch.step.constants.SQLConstant.
 public class CustomerJdbcItemWriter  {
 
     private final DataSource dataSource;
+    private final JdbcTemplate jdbcTemplate;
 
     @Bean("CustomerJDBCWriter")
     public JdbcBatchItemWriter<CustomerEntity> writer(){
