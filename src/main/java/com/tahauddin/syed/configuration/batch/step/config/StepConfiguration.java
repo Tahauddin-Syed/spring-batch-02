@@ -42,7 +42,7 @@ public class StepConfiguration {
     @Bean
     public Step stepOne() {
         return stepBuilder()
-                .<CustomerDTO, CustomerEntity>chunk(100, platformTransactionManager)
+                .<CustomerDTO, CustomerEntity>chunk(600, platformTransactionManager)
                 .reader(flatFileItemReader)
                 .processor(customerCsvToEntityProcessor)
                 .writer(batchItemWriter)

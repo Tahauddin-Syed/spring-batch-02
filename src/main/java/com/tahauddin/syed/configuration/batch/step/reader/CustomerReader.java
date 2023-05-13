@@ -26,7 +26,9 @@ public class CustomerReader {
     public FlatFileItemReader<CustomerDTO> reader() throws IOException {
         FlatFileItemReader<CustomerDTO> flatFileItemReader = new FlatFileItemReader<>();
         flatFileItemReader.setResource(resource);
+        flatFileItemReader.setLinesToSkip(1);
         DefaultLineMapper<CustomerDTO> lineMapper = new DefaultLineMapper<>();
+
         DelimitedLineTokenizer delimitedLineTokenizer = new DelimitedLineTokenizer();
         delimitedLineTokenizer.setDelimiter(DELIMITER_COMMA);
         delimitedLineTokenizer.setNames("first_name", "last_name", "email", "credit_card_company", "created_date", "ip_address", "ssn");
