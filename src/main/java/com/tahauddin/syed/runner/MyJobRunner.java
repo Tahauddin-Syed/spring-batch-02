@@ -15,17 +15,9 @@ import java.util.Date;
 @Component
 public class MyJobRunner implements CommandLineRunner {
 
-    private final JobLauncher jobLauncher;
-    private final Job job;
+
 
     @Override
     public void run(String... args) throws Exception {
-        runJob();
-    }
-
-    public void runJob() throws Exception{
-        jobLauncher.run(job, new JobParametersBuilder()
-                .addDate("todaysDate", new Date())
-                .toJobParameters());
     }
 }

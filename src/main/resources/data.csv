@@ -1,4 +1,4 @@
-first_name,last_name,email,credit_card_company,d/m/yyyy,ipv4,ssn
+first_name,last_name,email,credit_card_company,created_date,ip_address,ssn
 Jennifer,Hayes,j.l.hayes@aol.com,MasterCard,12/10/2017,33.119.120.72,282-04-4091
 Adam,Simmons,a.simmons@yahoo.com,VISA,25/10/2011,6.76.58.225,080-72-3537
 Nicole,Ross,nicolemross@rocketmail.com,MasterCard,29/4/2011,54.154.212.136,863-17-4600
