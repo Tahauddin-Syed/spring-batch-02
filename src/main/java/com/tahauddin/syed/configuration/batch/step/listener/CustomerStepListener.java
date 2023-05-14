@@ -17,12 +17,11 @@ public class CustomerStepListener implements StepExecutionListener {
         log.info("Step Name  :: {}", stepExecution.getStepName());
         log.info("Before Executing Step Local Date Time :: {}", LocalDateTime.now());
         log.info("Step Start Time  :: {}", stepExecution.getStartTime());
-        log.info("Step End Time  :: {}", stepExecution.getEndTime());
     }
 
     @Override
     public ExitStatus afterStep(StepExecution stepExecution) {
-
+        log.info("Step End Time  :: {}", LocalDateTime.now());
         log.info("After Step Status :: {}", stepExecution.getStatus());
         log.info("After Step Exit Status :: {}", stepExecution.getExitStatus());
 

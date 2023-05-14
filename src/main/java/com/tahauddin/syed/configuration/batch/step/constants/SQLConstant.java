@@ -13,7 +13,8 @@ public class SQLConstant {
             credit_card_company,
             created_date,
             ip_address,
-            ssn
+            ssn,
+            localDateTime
             )
             
             values(
@@ -24,7 +25,8 @@ public class SQLConstant {
             :credit_card_company,
             :created_date,
             :ip_address,
-            :ssn 
+            :ssn ,
+            :localDateTime
             )
              
             

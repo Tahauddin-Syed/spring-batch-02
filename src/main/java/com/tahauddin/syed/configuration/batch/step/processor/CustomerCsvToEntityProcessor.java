@@ -8,6 +8,7 @@ import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Component("CustomerCsvToEntityProcessor")
@@ -19,6 +20,7 @@ public class CustomerCsvToEntityProcessor implements ItemProcessor<CustomerDTO, 
         val customerEntity = new CustomerEntity();
         BeanUtils.copyProperties(item, customerEntity);
         customerEntity.setId(UUID.randomUUID().toString());
+        customerEntity.setLocalDateTime(LocalDateTime.now());
         return customerEntity;
     }
 }

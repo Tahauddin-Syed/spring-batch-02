@@ -1,6 +1,8 @@
 package com.tahauddin.syed.configuration.batch.step.reader;
 
 import com.tahauddin.syed.configuration.dto.CustomerDTO;
+import org.springframework.batch.item.database.support.OraclePagingQueryProvider;
+import org.springframework.batch.item.database.support.PostgresPagingQueryProvider;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.mapping.BeanWrapperFieldSetMapper;
 import org.springframework.batch.item.file.mapping.DefaultLineMapper;
@@ -32,10 +34,20 @@ public class CustomerReader {
         BeanWrapperFieldSetMapper<CustomerDTO> fieldSetMapper = new BeanWrapperFieldSetMapper<>();
         fieldSetMapper.setTargetType(CustomerDTO.class);
         lineMapper.setFieldSetMapper(fieldSetMapper);
-
         flatFileItemReader.setLineMapper(lineMapper);
 
+
+
         return flatFileItemReader;
+    }
+
+    private OraclePagingQueryProvider oraclePagingQueryProvider(){
+
+        final OraclePagingQueryProvider queryProvider = new OraclePagingQueryProvider();
+
+        queryProvider.generateFirstPageQuery(500);
+
+        return queryProvider;
     }
 
 }

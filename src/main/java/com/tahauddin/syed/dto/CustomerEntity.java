@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -20,7 +22,7 @@ public class CustomerEntity {
     private String created_date;
     private String ip_address;
     private String ssn;
-
+    private LocalDateTime localDateTime;
 
 
 }
