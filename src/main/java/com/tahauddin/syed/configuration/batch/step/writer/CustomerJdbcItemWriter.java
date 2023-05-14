@@ -30,7 +30,6 @@ public class CustomerJdbcItemWriter  {
         batchItemWriter.setSql(CUSTOMER_INSERT_QUERY);
         BeanPropertyItemSqlParameterSourceProvider<CustomerEntity> parameterSourceProvider = new BeanPropertyItemSqlParameterSourceProvider<>();
         batchItemWriter.setItemSqlParameterSourceProvider(parameterSourceProvider);
-
         return batchItemWriter;
     }
 

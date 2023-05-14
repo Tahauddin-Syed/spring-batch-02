@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 @Configuration
 @Slf4j
-public class CustomerListener implements JobExecutionListener {
+public class CustomerJobListener implements JobExecutionListener {
 
     @Override
     public void beforeJob(JobExecution jobExecution) {

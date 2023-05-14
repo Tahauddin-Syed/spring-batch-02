@@ -19,7 +19,6 @@ public class CustomerCsvToEntityProcessor implements ItemProcessor<CustomerDTO, 
         val customerEntity = new CustomerEntity();
         BeanUtils.copyProperties(item, customerEntity);
         customerEntity.setId(UUID.randomUUID().toString());
-        log.info("Customer Entity is :: {}", customerEntity);
         return customerEntity;
     }
 }
