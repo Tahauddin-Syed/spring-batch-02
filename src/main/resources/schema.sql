@@ -9,4 +9,5 @@ create table CUSTOMER_TABLE
 	created_date date,
 	ip_address varchar(255),
 	ssn varchar(255)
+	localDateTime timestamp
 )
